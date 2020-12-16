@@ -1,0 +1,33 @@
+name: 'Serverless'
+description: 'Perform serverless actions'
+inputs:
+  command:
+    description: 'Command to execute'
+    required: true
+  stage:  # id of input
+    description: 'Deployment stage'
+    required: true
+  aws-profile:  # id of input
+    description: 'Serverless profile name'
+    required: true
+    default: 'default'
+  aws-region:  # id of input
+    description: 'AWS region'
+    required: false
+    default: 'eu-central-1'
+  aws-access-key-id:
+    description: ''
+    required: true
+  aws-secret-access-key:
+    description: ''
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.stage }}
+    - ${{ inputs.aws-profile }}
+    - ${{ inputs.aws-region }}
+    - ${{ inputs.aws-access-key-id }}
+    - ${{ inputs.aws-secret-access-key }}
+    - ${{ inputs.command }}
