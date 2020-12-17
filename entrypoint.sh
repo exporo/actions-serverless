@@ -6,6 +6,8 @@ echo "Region: $3"
 echo "Command: $6"
 
 mkdir ~/.aws
+rm ~/.aws/credentials
+rm ~/.aws/config
 printf "[$2]\naws_access_key_id = $4\naws_secret_access_key = $5" >> ~/.aws/credentials
 printf "[$2]\nregion = $3" >> ~/.aws/config
 cat ~/.aws/config
