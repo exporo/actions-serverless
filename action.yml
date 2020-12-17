@@ -21,6 +21,10 @@ inputs:
   aws-secret-access-key:
     description: ''
     required: true
+  directory:
+    description: 'Working directory'
+    required: true
+    default: '.'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -31,3 +35,4 @@ runs:
     - ${{ inputs.aws-access-key-id }}
     - ${{ inputs.aws-secret-access-key }}
     - ${{ inputs.command }}
+    - ${{ inputs.directory }}
