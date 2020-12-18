@@ -9,7 +9,7 @@ inputs:
     required: true
   aws-profile:  # id of input
     description: 'Serverless profile name'
-    required: true
+    required: false
     default: 'default'
   aws-region:  # id of input
     description: 'AWS region'
@@ -17,10 +17,10 @@ inputs:
     default: 'eu-central-1'
   aws-access-key-id:
     description: ''
-    required: true
+    required: false
   aws-secret-access-key:
     description: ''
-    required: true
+    required: false
   directory:
     description: 'Working directory'
     required: true
@@ -32,7 +32,7 @@ runs:
     - ${{ inputs.stage }}
     - ${{ inputs.aws-profile }}
     - ${{ inputs.aws-region }}
-    - ${{ inputs.aws-access-key-id }}
-    - ${{ inputs.aws-secret-access-key }}
     - ${{ inputs.command }}
     - ${{ inputs.directory }}
+    - ${{ inputs.aws-access-key-id }}
+    - ${{ inputs.aws-secret-access-key }}
