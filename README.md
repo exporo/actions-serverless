@@ -74,6 +74,18 @@ serverless [command] --stage [stage] --aws-profile [aws-profile]
 The action container itself is based on [exporo/sls-docker-image](https://github.com/exporo/sls-docker-image),
 build on top of *alpine*, with serverless addons preinstalled.
 
+Access to private NPM packages
+--------------------------------------
+In order to access NPM packages that are private, you have to place  `.npmrc` file 
+ the working directory before serverless command is executed. Ex.
+ 
+ ```yaml
+  - name: Setup access to Private NPM
+    run: |
+      echo "@yourOrganization:registry=https://npm.pkg.github.com/" >> ~/.npmrc
+      echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_READ_TOKEN }}" >> ~/.npmrc
+```
+
 Example commands that can be run with the action
 --------------------------------------
 

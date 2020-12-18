@@ -24,6 +24,7 @@ echo "Region: $3"
 echo "Command: $4"
 echo "Directory: $5"
 
+cp -f .npmrc ~/.npmrc
 mkdir -p ~/.aws
 rm -f ~/.aws/credentials
 rm -f ~/.aws/config
