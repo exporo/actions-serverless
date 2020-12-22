@@ -150,7 +150,7 @@ Deployment with different region
       aws-region: eu-central-1
 ```
 
-##### Create Domain
+##### Remove Stack
 ```yaml
 ...
   - name: Remove Stack

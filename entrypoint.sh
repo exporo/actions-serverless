@@ -31,7 +31,8 @@ rm -f ~/.aws/config
 printf "[$2]\naws_access_key_id = ${AWS_ACCESS_KEY_ID}\naws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" >> ~/.aws/credentials
 printf "[$2]\nregion = $3" >> ~/.aws/config
 
-PROJECT_NAME=$(sls info --stage $1 --aws-profile $2 | grep 'service:' | sed -e 's/service: //g')
+PROJECT_NAME=$(cat $5/serverless.yml | grep 'service:' | sed -e 's/service: //g')
+echo "Project: $PROJECT_NAME"
 
 # creating ssh file is required for `sls remove`
 mkdir -p  ~/.ssh
