@@ -47,6 +47,7 @@ List of all available parameters
 | directory 	        | no  	        | . (current)                   | Directory containing *serverless.yml* file  	|
 | aws-access-key-id 	| no  	        | AWS_ACCESS_KEY_ID (secret)    | See *Secrets* section  	                    |
 | aws-secret-access-key | no  	        | AWS_SECRET_ACCESS_KEY (secret)| See *Secrets* section 	                    |
+| debug                 | no            | false                         | Run command with SLS_DEBUG=*                  |
 
 
 Secrets

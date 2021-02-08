@@ -25,6 +25,10 @@ inputs:
     description: 'Working directory'
     required: true
     default: '.'
+  debug:
+    description: 'SLS_DEBUG'
+    required: false
+    default: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -36,3 +40,4 @@ runs:
     - ${{ inputs.directory }}
     - ${{ inputs.aws-access-key-id }}
     - ${{ inputs.aws-secret-access-key }}
+    - ${{ inputs.debug }}

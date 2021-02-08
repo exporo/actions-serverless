@@ -23,6 +23,7 @@ echo "Profile: $2"
 echo "Region: $3"
 echo "Command: $4"
 echo "Directory: $5"
+echo "Debug: $8"
 
 cp -f .npmrc ~/.npmrc
 mkdir -p ~/.aws
@@ -40,4 +41,8 @@ rm -f ~/.ssh/$PROJECT_NAME-$1
 touch  ~/.ssh/$PROJECT_NAME-$1
 
 cd $5
-serverless $4 --stage $1 --aws-profile $2
+if [[ $8 ]]; then
+SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
+else
+  serverless $4 --stage $1 --aws-profile $2
+fi
