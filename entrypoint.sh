@@ -25,7 +25,9 @@ echo "Command: $4"
 echo "Directory: $5"
 echo "Debug: $8"
 
-cp -f .npmrc ~/.npmrc
+
+
+cp -f $5/.npmrc ~/.npmrc
 mkdir -p ~/.aws
 rm -f ~/.aws/credentials
 rm -f ~/.aws/config
@@ -41,7 +43,8 @@ rm -f ~/.ssh/$PROJECT_NAME-$1
 touch  ~/.ssh/$PROJECT_NAME-$1
 
 cd $5
-if [[ $8 ]]; then
+
+if [[ $8 == 'true' ]]; then
 SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
 else
   serverless $4 --stage $1 --aws-profile $2

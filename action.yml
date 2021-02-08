@@ -28,7 +28,7 @@ inputs:
   debug:
     description: 'SLS_DEBUG'
     required: false
-    default: false
+    default: 'false'
 runs:
   using: 'docker'
   image: 'Dockerfile'
