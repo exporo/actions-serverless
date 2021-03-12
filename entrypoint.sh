@@ -24,6 +24,7 @@ echo "Region: $3"
 echo "Command: $4"
 echo "Directory: $5"
 echo "Debug: $8"
+echo "Data: $9"
 
 
 
@@ -45,7 +46,15 @@ touch  ~/.ssh/$PROJECT_NAME-$1
 cd $5
 
 if [[ $8 == 'true' ]]; then
-SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
+  if [[ -z "$9" ]]; then
+    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2  --data $9
+  else
+    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
+  fi
 else
-  serverless $4 --stage $1 --aws-profile $2
+  if [[ -z "$9" ]]; then
+    serverless $4 --stage $1 --aws-profile $2  --data $9
+  else
+    serverless $4 --stage $1 --aws-profile $2  --data $9
+  fi
 fi

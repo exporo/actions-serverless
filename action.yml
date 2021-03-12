@@ -29,6 +29,9 @@ inputs:
     description: 'SLS_DEBUG'
     required: false
     default: 'false'
+  data:
+    description: 'command data'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -41,3 +44,4 @@ runs:
     - ${{ inputs.aws-access-key-id }}
     - ${{ inputs.aws-secret-access-key }}
     - ${{ inputs.debug }}
+    - ${{ inputs.data }}
