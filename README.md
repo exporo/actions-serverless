@@ -48,6 +48,7 @@ List of all available parameters
 | aws-access-key-id 	| no  	        | AWS_ACCESS_KEY_ID (secret)    | See *Secrets* section  	                    |
 | aws-secret-access-key | no  	        | AWS_SECRET_ACCESS_KEY (secret)| See *Secrets* section 	                    |
 | debug                 | no            | false                         | Run command with SLS_DEBUG=*                  |
+| data                  | no            |                               | Data parameter passed to serverless command   |
 
 
 Secrets
@@ -125,6 +126,17 @@ Deployment with different region
       stage: dev
       aws-profile: example-profile
       aws-region: us-west-1
+```
+
+Deployment with custom data
+```yaml
+...
+  - name: Migrate
+    uses: exporo/actions-serverless@master
+    with:
+      command: migrate
+      stage: dev
+      data: '{"cli":"migrate --force"}'
 ```
 
 ##### Create Certificate
