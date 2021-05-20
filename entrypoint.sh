@@ -47,14 +47,14 @@ cd $5
 
 if [[ $8 == 'true' ]]; then
   if [[ -z "$9" ]]; then
-    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2  --data $9
+    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2  --data "$9"
   else
     SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
   fi
 else
   if [[ -z "$9" ]]; then
-    serverless $4 --stage $1 --aws-profile $2  --data $9
+    serverless $4 --stage $1 --aws-profile $2  --data "$9"
   else
-    serverless $4 --stage $1 --aws-profile $2  --data $9
+    serverless $4 --stage $1 --aws-profile $2
   fi
 fi
