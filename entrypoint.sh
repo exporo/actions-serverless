@@ -27,8 +27,14 @@ echo "Debug: $8"
 echo "Data: $9"
 
 
-
 cp -f $5/.npmrc ~/.npmrc
+
+echo "Listing current folder"
+ls -la
+
+echo "Inspecting .npmrc file"
+cat ~/.npmrc
+
 mkdir -p ~/.aws
 rm -f ~/.aws/credentials
 rm -f ~/.aws/config
