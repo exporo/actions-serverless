@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash -e
 
 if [[ -z "$6" ]]; then
   if [[ -z "${AWS_ACCESS_KEY_ID}" ]]; then
