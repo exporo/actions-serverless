@@ -16,7 +16,7 @@ jobs:
       run: |
         echo "Building image with serverless version: ${{ github.event.inputs.sls }}"
 
-    - name: Build and push
+  - name: Build and push
       uses: docker/build-push-action@v3
       with:
         context: ./sls-docker-image
