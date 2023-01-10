@@ -7,6 +7,10 @@ on:
         description: 'Serverless version'
         required: false
         default: '3.26.0'
+      tag-version:
+        description: 'Docker Image Tag'
+        required: false
+        default: 'latest'
 
 jobs:
   buildImage:
@@ -31,6 +35,6 @@ jobs:
       with:
         context: sls-docker-image
         push: true
-        tags: ghcr.io/exporo/sls-docker-image:latest
+        tags: ghcr.io/exporo/sls-docker-image:${{ github.event.inputs.tag-version }}
         secrets: |
           GIT_AUTH_TOKEN=${{ secrets.NPM_AUTH_TOKEN }}
