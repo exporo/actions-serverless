@@ -55,6 +55,8 @@ cd $5
 
 echo "FINISHED 4"
 
+exit 1
+
 #if [[ $8 == 'true' ]]; then
 #  if [[ -z "$9" ]]; then
 #    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
