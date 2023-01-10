@@ -19,7 +19,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
-        context: ./sls-docker-image
+        context: sls-docker-image
         push: false
         tags: exporo/sls-docker-image:latest
         secrets: |
