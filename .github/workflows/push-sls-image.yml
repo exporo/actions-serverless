@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         context: sls-docker-image
-        push: false
+        push: true
         tags: ghcr.io/exporo/sls-docker-image:latest
         secrets: |
           GIT_AUTH_TOKEN=${{ secrets.NPM_AUTH_TOKEN }}
