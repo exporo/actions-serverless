@@ -1,0 +1,20 @@
+name: Docker Push Image
+
+on: 
+  workflow_dispatch:
+    inputs:
+      sls:
+        description: 'Serverless version'
+        required: false
+        default: '3.26.0'
+
+jobs:
+  buildImage:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "Building image with serverless version: ${{ github.event.inputs.sls }}"
+
+
+    
+  
