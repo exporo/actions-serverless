@@ -62,6 +62,7 @@ if [[ $8 == 'true' ]]; then
 else
   if [ -z "$9" ]; then
     echo "XXXXX 5 -$9-"
+    echo "size: -${#9}-"
     #serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
   else
     echo "YYYYY 4"
