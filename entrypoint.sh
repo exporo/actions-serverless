@@ -49,24 +49,22 @@ echo "FINISHED 2"
 
 touch  ~/.ssh/$PROJECT_NAME-$1
 
-echo "FINISHED 3"
-
 cd $5
 
-echo "FINISHED 4"
-
-exit 1
-
-#if [[ $8 == 'true' ]]; then
+if [[ $8 == 'true' ]]; then
+  echo "XXXXX 3"
 #  if [[ -z "$9" ]]; then
 #    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
 #  else
 #    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
 #  fi
-#else
+else
+  echo "YYYYY 4"
 #  if [[ -z "$9" ]]; then
 #    serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
 #  else
 #    serverless $4 --stage $1 --aws-profile $2
 #  fi
-#fi
+fi
+
+exit 1
