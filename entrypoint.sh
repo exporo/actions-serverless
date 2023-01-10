@@ -61,7 +61,7 @@ if [[ $8 == 'true' ]]; then
   fi
 else
   if [ -z "$9" ]; then
-    echo "XXXXX 5"
+    echo "XXXXX 5 -$9-"
     #serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
   else
     echo "YYYYY 4"
