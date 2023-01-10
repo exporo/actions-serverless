@@ -52,7 +52,7 @@ touch  ~/.ssh/$PROJECT_NAME-$1
 cd $5
 
 if [[ $8 == 'true' ]]; then
-  if [[ -z "$9" ]]; then
+  if [ -z "$9" ]; then
     echo "XXXXX 3"
     #SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
   else
@@ -60,7 +60,7 @@ if [[ $8 == 'true' ]]; then
     #SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
   fi
 else
-  if [[ -z "$9" ]]; then
+  if [ -z "$9" ]; then
     echo "XXXXX 5"
     #serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
   else
