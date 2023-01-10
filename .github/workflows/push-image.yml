@@ -12,17 +12,18 @@ jobs:
   buildImage:
     runs-on: ubuntu-latest
     steps:
-    - run: |
+    - name: Print inputs
+      run: |
         echo "Building image with serverless version: ${{ github.event.inputs.sls }}"
 
-   - name: Build and push
-     uses: docker/build-push-action@v3
-     with:
-      context: ./sls-docker-image
-      push: false
-      tags: exporo/sls-docker-image:latest
-      secrets: |
-        GIT_AUTH_TOKEN=${{ secrets.NPM_AUTH_TOKEN }}
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        context: ./sls-docker-image
+        push: false
+        tags: exporo/sls-docker-image:latest
+        secrets: |
+          GIT_AUTH_TOKEN=${{ secrets.NPM_AUTH_TOKEN }}
 
 
     
