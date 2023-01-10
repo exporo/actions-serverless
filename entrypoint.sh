@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/sh -l
 
 if [[ -z "$6" ]]; then
   if [[ -z "${AWS_ACCESS_KEY_ID}" ]]; then
@@ -60,7 +60,8 @@ if [[ $8 == 'true' ]]; then
     #SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
   fi
 else
-  if [ -z "$9" ]; then
+  if [ -z "$9" ] 
+  then
     echo "XXXXX 5 -$9-"
     echo "size: -${#9}-"
     #serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
