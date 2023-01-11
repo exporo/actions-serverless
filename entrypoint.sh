@@ -44,13 +44,13 @@ touch  ~/.ssh/$PROJECT_NAME-$1
 cd $5
 
 if [ $8 == 'true' ]; then
-  if [ "$9" == "" ]; then
+  if [ "$9" == "" ] || [ "$9" == "{}" ]; then
     SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
   else 
     SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
   fi
 else
-  if [ "$9" == "" ]; then
+  if [ "$9" == "" ] || [ "$9" == "{}" ]; then
     serverless $4 --stage $1 --aws-profile $2
   else
     serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
