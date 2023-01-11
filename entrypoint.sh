@@ -47,23 +47,14 @@ cd $5
 
 if [ $8 == 'true' ]; then
   if [ "$9" == "" ]; then
-    echo "XXXXX 3"
     SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
   else 
-    echo "YYYYY 4"
     SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
   fi
 else
   if [ "$9" == "" ]; then
-    echo "XXXXX 5 -$9-"
-    echo "size: -${#9}-"
     serverless $4 --stage $1 --aws-profile $2
   else
-    echo "YYYYY 4"
     serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
   fi
 fi
-
-echo "FINISHED 3"
-
-exit 1
