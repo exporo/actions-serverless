@@ -43,6 +43,9 @@ touch  ~/.ssh/$PROJECT_NAME-$1
 
 cd $5
 
+echo "Printing runtime BASH"
+readlink -f $(which sh)
+
 if [ $8 == 'true' ]; then
   if [ "$9" == "" ] || [ "$9" == "{}" ]; then
     SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
