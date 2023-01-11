@@ -6,6 +6,6 @@ ENV SLS_VERSION ${SLS_VERSION}
 ENV SERVERLESS_VERSION=3.26.0
 
 #Install Python
-RUN apt install curl python3-pip && \
+RUN apt update -y && apt install curl python3-pip && \
     pip3 install awscli && \
     npm install -g serverless@${SLS_VERSION}
