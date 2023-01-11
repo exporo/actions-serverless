@@ -37,10 +37,8 @@ PROJECT_NAME=$(cat $5/serverless.yml | grep 'service:' | sed -e 's/service: //g'
 echo "Project: $PROJECT_NAME"
 
 # creating ssh file is required for `sls remove`
-mkdir -p  ~/.ss
-
+mkdir -p  ~/.ssh
 rm -f ~/.ssh/$PROJECT_NAME-$1
-
 touch  ~/.ssh/$PROJECT_NAME-$1
 
 cd $5
