@@ -26,8 +26,6 @@ echo "Directory: $5"
 echo "Debug: $8"
 echo "Data: $9"
 
-
-
 cp -f $5/.npmrc ~/.npmrc
 mkdir -p ~/.aws
 rm -f ~/.aws/credentials
@@ -39,13 +37,9 @@ PROJECT_NAME=$(cat $5/serverless.yml | grep 'service:' | sed -e 's/service: //g'
 echo "Project: $PROJECT_NAME"
 
 # creating ssh file is required for `sls remove`
-mkdir -p  ~/.ssh
-
-echo "FINISHED 1"
+mkdir -p  ~/.ss
 
 rm -f ~/.ssh/$PROJECT_NAME-$1
-
-echo "FINISHED 2"
 
 touch  ~/.ssh/$PROJECT_NAME-$1
 
@@ -54,19 +48,19 @@ cd $5
 if [ $8 == 'true' ]; then
   if [ "$9" == "" ]; then
     echo "XXXXX 3"
-    #SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
-  else
+    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
+  else 
     echo "YYYYY 4"
-    #SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
+    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
   fi
 else
   if [ "$9" == "" ]; then
     echo "XXXXX 5 -$9-"
     echo "size: -${#9}-"
-    #serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
+    serverless $4 --stage $1 --aws-profile $2
   else
     echo "YYYYY 4"
-    #serverless $4 --stage $1 --aws-profile $2
+    serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
   fi
 fi
 
