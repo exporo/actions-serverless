@@ -1,4 +1,4 @@
-name: Docker Push Image
+name: Serverless Docker Push Image
 
 on: 
   workflow_dispatch:
