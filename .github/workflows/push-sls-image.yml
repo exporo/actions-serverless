@@ -1,4 +1,4 @@
-name: Docker Push Image
+name: Serverless Docker Push Image
 
 on: 
   workflow_dispatch:
@@ -7,20 +7,35 @@ on:
         description: 'Serverless version'
         required: false
         default: '3.26.0'
+      tag-version:
+        description: 'Docker Image Tag'
+        required: false
+        default: 'latest'
 
 jobs:
-  buildImage:
+  pushImage:
     runs-on: ubuntu-latest
     steps:
     - name: Print inputs
       run: |
         echo "Building image with serverless version: ${{ github.event.inputs.sls }}"
 
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Login to image repository
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
-        context: ./sls-docker-image
-        push: false
-        tags: exporo/sls-docker-image:latest
-        secrets: |
-          GIT_AUTH_TOKEN=${{ secrets.NPM_AUTH_TOKEN }}
+        context: sls-docker-image
+        build-args: |
+          "SLS_VERSION=${{ github.event.inputs.sls }}"
+        push: true
+        tags: ghcr.io/exporo/sls-docker-image:${{ github.event.inputs.tag-version }}
+
