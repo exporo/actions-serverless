@@ -18,19 +18,28 @@ else
   AWS_SECRET_ACCESS_KEY=$7
 fi
 
+if [[ -z "$8" ]]; then
+  if [[ -z "${AWS_SESSION_TOKEN}" ]]; then
+    echo "Set the AWS_SESSION_TOKEN env variable or pass aws-session-token parameter."
+    exit 1
+  fi
+else
+  AWS_SESSION_TOKEN=$8
+fi
+
 echo "Stage $1"
 echo "Profile: $2"
 echo "Region: $3"
 echo "Command: $4"
 echo "Directory: $5"
-echo "Debug: $8"
-echo "Data: $9"
+echo "Debug: $9"
+echo "Data: ${10}"
 
 cp -f $5/.npmrc ~/.npmrc
 mkdir -p ~/.aws
 rm -f ~/.aws/credentials
 rm -f ~/.aws/config
-printf "[$2]\naws_access_key_id = ${AWS_ACCESS_KEY_ID}\naws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" >> ~/.aws/credentials
+printf "[$2]\naws_access_key_id = ${AWS_ACCESS_KEY_ID}\naws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}\naws_session_token = ${AWS_SESSION_TOKEN}" >> ~/.aws/credentials
 printf "[$2]\nregion = $3" >> ~/.aws/config
 
 PROJECT_NAME=$(cat $5/serverless.yml | grep 'service:' | sed -e 's/service: //g')
@@ -43,16 +52,16 @@ touch  ~/.ssh/$PROJECT_NAME-$1
 
 cd $5
 
-if [[ $8 == 'true' ]]; then
-  if [[ -z "$9" ]]; then
+if [[ $9 == 'true' ]]; then
+  if [[ -z "${10}" ]]; then
     SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
   else
-    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
+    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2 --data "${10@Q}"
   fi
 else
-  if [[ -z "$9" ]]; then
+  if [[ -z "${10}" ]]; then
     serverless $4 --stage $1 --aws-profile $2
   else
-    serverless $4 --stage $1 --aws-profile $2  --data ${9@Q}
+    serverless $4 --stage $1 --aws-profile $2 --data "${10@Q}"
   fi
 fi
