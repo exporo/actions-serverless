@@ -21,6 +21,9 @@ inputs:
   aws-secret-access-key:
     description: ''
     required: false
+  aws-session-token:
+    description: ''
+    required: false
   directory:
     description: 'Working directory'
     required: true
@@ -43,5 +46,6 @@ runs:
     - ${{ inputs.directory }}
     - ${{ inputs.aws-access-key-id }}
     - ${{ inputs.aws-secret-access-key }}
+    - ${{ inputs.aws-session-token }}
     - ${{ inputs.debug }}
     - ${{ inputs.data }}
