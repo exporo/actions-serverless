@@ -3,6 +3,10 @@ name: Serverless Docker Push Image
 on: 
   workflow_dispatch:
     inputs:
+      node-version:
+        description: 'Node version'
+        required: false
+        default: '16'
       sls:
         description: 'Serverless version'
         required: false
@@ -18,7 +22,7 @@ jobs:
     steps:
     - name: Print inputs
       run: |
-        echo "Building image with serverless version: ${{ github.event.inputs.sls }}"
+        echo "Building image with serverless version: ${{ github.event.inputs.sls }} and node version ${{ github.event.inputs.node-version }}"
 
     - name: Checkout
       uses: actions/checkout@v3
@@ -36,6 +40,7 @@ jobs:
         context: sls-docker-image
         build-args: |
           "SLS_VERSION=${{ github.event.inputs.sls }}"
+          "NODE_VERSION=${{ github.event.inputs.node-version }}"
         push: true
         tags: ghcr.io/exporo/sls-docker-image:${{ github.event.inputs.tag-version }}
 

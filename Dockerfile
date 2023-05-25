@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM ghcr.io/exporo/sls-docker-image:latest
+FROM ghcr.io/exporo/sls-docker-image:${TAG_VERSION}
 
 # https://help.github.com/en/actions/creating-actions/dockerfile-support-for-github-actions#user
 USER root

@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM node:12.22.12-bullseye-slim
+FROM node:${NODE_VERSION}-bullseye-slim
 ARG SLS_VERSION
 ENV SLS_VERSION ${SLS_VERSION}
 
