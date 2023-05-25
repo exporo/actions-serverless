@@ -42,8 +42,6 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile-${{ inputs.node-version }}'
-  build-args:
-    - TAG_VERSION=${{ inputs.node-version }}
   args:
     - ${{ inputs.stage }}
     - ${{ inputs.aws-profile }}
