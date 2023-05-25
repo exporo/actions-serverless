@@ -16,10 +16,6 @@ on:
         description: 'Serverless version'
         required: false
         default: '3.26.0'
-      tag-version:
-        description: 'Docker Image Tag'
-        required: false
-        default: 'latest'
 
 jobs:
   pushImage:
