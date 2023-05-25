@@ -7,6 +7,11 @@ on:
         description: 'Node version'
         required: false
         default: '16'
+        type: choice
+        options:
+          - 12
+          - 16
+          - 18
       sls:
         description: 'Serverless version'
         required: false
@@ -42,5 +47,5 @@ jobs:
           "SLS_VERSION=${{ github.event.inputs.sls }}"
           "NODE_VERSION=${{ github.event.inputs.node-version }}"
         push: true
-        tags: ghcr.io/exporo/sls-docker-image:${{ github.event.inputs.tag-version }}
+        tags: ghcr.io/exporo/sls-docker-image:v${{ github.event.inputs.node-version }}
 

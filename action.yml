@@ -1,10 +1,10 @@
 name: 'Serverless'
 description: 'Perform serverless actions'
 inputs:
-  tag-version:
-    description: 'SLS Docker Image tag version'
+  node-version:
+    description: 'SLS Docker Image Node Version'
     required: false
-    default: 'default'
+    default: '12'
   command:
     description: 'Command to execute'
     required: true
@@ -41,9 +41,9 @@ inputs:
     required: false
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'Dockerfile-${{ inputs.node-version }}'
   build-args:
-    - TAG_VERSION=${{ inputs.tag-version }}
+    - TAG_VERSION=${{ inputs.node-version }}
   args:
     - ${{ inputs.stage }}
     - ${{ inputs.aws-profile }}
