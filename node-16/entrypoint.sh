@@ -56,12 +56,12 @@ if [[ $9 == 'true' ]]; then
   if [[ -z "${10}" ]]; then
     SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2
   else
-    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2 --data "${10@Q}"
+    SLS_DEBUG=* serverless $4 --stage $1 --aws-profile $2 --data ${10}
   fi
 else
   if [[ -z "${10}" ]]; then
     serverless $4 --stage $1 --aws-profile $2
   else
-    serverless $4 --stage $1 --aws-profile $2 --data "${10@Q}"
+    serverless $4 --stage $1 --aws-profile $2 --data ${10}
   fi
 fi
