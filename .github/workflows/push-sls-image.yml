@@ -12,10 +12,11 @@ on:
           - 12
           - 16
           - 18
+          - 20
       sls:
         description: 'Serverless version'
         required: false
-        default: '3.26.0'
+        default: '3.39.0'
 
 jobs:
   pushImage:
@@ -26,10 +27,10 @@ jobs:
         echo "Building image with serverless version: ${{ github.event.inputs.sls }} and node version ${{ github.event.inputs.node-version }}"
 
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Login to image repository
-      uses: docker/login-action@v2
+      uses: docker/login-action@v3
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
