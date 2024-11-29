@@ -16,7 +16,7 @@ on:
       sls:
         description: 'Serverless version'
         required: false
-        default: '3.26.0'
+        default: '3.39.0'
 
 jobs:
   pushImage:
